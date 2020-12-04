@@ -44,7 +44,7 @@ sudo touch .env
 echo "DISCORD_TOKEN=${token}" >> .env
 echo "AU_CLIENT_DIR=../client/bin/Debug/netcoreapp3.1" >> .env
 echo "DATABASE_URL=postgresql://postgres${password}@localhost:5432/postgres" >> .env
-echo "BOT_INVITE_LINK=https://discord.com/api/oauth2/authorize?client_id=${id}&permissions=0&scope=bot" >> .env
+echo "BOT_INVITE_LINK=https://discord.com/api/oauth2/authorize?client_id=${id}&permissions=8&scope=bot" >> .env
 npm install
 echo "Waiting for the TypeScript compiler to finish... (This might take a while)"
 ./node_modules/.bin/tsc
