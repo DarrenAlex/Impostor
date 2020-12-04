@@ -67,4 +67,5 @@ echo "==========================================================================
 echo "=========================================================================================================="
 echo "Installation complete. Run restart.sh to restart the bot if needed. You may remove the install script now."
 echo "NOTE: You may ignore all warnings, they aren't important."
+echo "NOTE: I highly recommend changing the PostgreSQL password."
 exit 0;
