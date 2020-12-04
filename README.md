@@ -13,21 +13,9 @@ This is the source code for the Discord bot and Among Us client that compromise 
 
 This project consists of two components, creatively named bot and client. Bot is the Discord part written in TypeScript that handles all the logic around command handling, session management, member voice channel moving, etc. Client is a simple C# implementation of the Among Us networking protocol, just barely enough to connect to the lobby, fetch player data and emit events. Bot launches a client instance for every lobby, reading events from client through stdout.
 
-## Developing Bot
-
-To get started with developing the bot, you'll need to install dependencies. First of all you need to have [Node.js](https://nodejs.org) installed. After that, simply run `npm/yarn install` to get all the dependencies needed.
-
-`./node_modules/.bin/tsc -w` will start a watching TypeScript compiler that will automatically compile the TypeScript source to JavaScript. After that, simply configure your `.env` by copying the template and filling in values, then run `node dist/index.js` to start the bot.
-
-Note that you will also need a PostgreSQL database for running the bot.
-
-## Developing Client
-
-For the client, be sure to clone the repository with submodules enabled, then simply open the solution in `client/` to develop. You can also use the dotnet CLI to build the client, using `dotnet build`.
-
 ## Step-by-Step Instructions for Self-Hosting Impostor
 
-NOTE: For Debian based distributions, just use the `install.sh` script to automatically run the bot with pm2. Alternatively, follow the steps below:
+NOTE: For Debian based distributions, just run `sudo wget https://raw.githubusercontent.com/molenzwiebel/Impostor/master/install.sh | chmod a+x install.sh | sudo ./install.sh` to automatically run the bot with pm2. Alternatively, follow the steps below:
 
 0. Install Node.js + npm, .NET Core, PostgreSQL, and any others needed.
 1. Clone the repository recursively (`git clone --recursive https://github.com/molenzwiebel/Impostor`)
