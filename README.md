@@ -34,8 +34,6 @@ NOTE: For Debian based distributions, just run `sudo wget https://raw.githubuser
 8. Change directory to `/client`
 9. Open cmd/PowerShell/terminal and run `dotnet build`
 
-Note: When using Linux, I recommend setting up a `.sh` file to simplify the process when rebooting the bot, as some bugs in the code require a restart. 
-
 # License
 
 [MIT](http://opensource.org/licenses/MIT)
