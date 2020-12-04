@@ -1,6 +1,6 @@
 ## Step-by-Step Instructions for Self-Hosting Impostor
 
-NOTE: For Debian based distributions, just run `sudo wget https://raw.githubusercontent.com/molenzwiebel/Impostor/master/install.sh | chmod a+x install.sh | sudo ./install.sh` to automatically run the bot with pm2. Alternatively, follow the steps below:
+NOTE: For Debian based distributions, just run `sudo wget https://raw.githubusercontent.com/DarrenAlex/Impostor/master/install.sh | chmod a+x install.sh | sudo ./install.sh` to automatically run the bot with pm2. Alternatively, follow the steps below:
 
 0. Install Node.js + npm, .NET Core, PostgreSQL, and any others needed.
 1. Clone the repository recursively (`git clone --recursive https://github.com/molenzwiebel/Impostor`)
