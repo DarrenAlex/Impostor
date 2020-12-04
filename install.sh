@@ -32,7 +32,7 @@ case $pm2 in
     * ) echo "Please answer yes or no.";;
 esac
 pm2 kill
-git clone --recursive https://github.com/DarrenAlex/Impostor
+git clone --recursive https://github.com/molenzwiebel/Impostor
 cd Impostor/bot
 if [ -z "$password" ]
 then
