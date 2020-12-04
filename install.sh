@@ -19,7 +19,7 @@ case $dotnet in
     * ) echo "Please answer yes or no.";;
 esac
 
-read -p "Do you have Node.JS and NPM installed? [y/n] " postgresql
+read -p "Do you have PostgreSQL installed? [y/n] " postgresql
 case $postgresql in
     [Nn]* ) sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'; sudo wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -; sudo apt-get update; sudo apt-get -y install postgresql;;
     [Yy]* ) echo "Proceeding with install.";;
