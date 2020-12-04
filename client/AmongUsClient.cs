@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -17,7 +17,7 @@ namespace client
     {
         // Represents a handshake of the latest version with name set to "Impostor".
         private static readonly byte[] HANDSHAKE =
-            {0x80, 0xD9, 0x02, 0x03, 0x08, 0x49, 0x6D, 0x70, 0x6F, 0x73, 0x74, 0x6F, 0x72};
+            {0x4A, 0xE2, 0x02, 0x03, 0x08, 0x49, 0x6D, 0x70, 0x6F, 0x73, 0x74, 0x6F, 0x72};
 
         // The port to the Among Us matchmaker.
         private const ushort MATCHMAKER_PORT = 22023;
