@@ -1,3 +1,4 @@
+import "dotenv/config";
 export const enum LobbyRegion {
     ASIA = "Asia",
     NORTH_AMERICA = "North America",
@@ -23,44 +24,40 @@ export const SHORT_REGION_NAMES = {
 };
 
 export const COLOR_EMOTES: { [key: number]: string } = {
-    [0]: "crewmate_red:761211569635459092",
-    [1]: "crewmate_blue:761211569546985502",
-    [2]: "crewmate_green:761211569744904232",
-    [3]: "crewmate_pink:761211569379999806",
-    [4]: "crewmate_orange:761211569606361127",
-    [5]: "crewmate_yellow:761211569950294046",
-    [6]: "crewmate_black:761211569597710356",
-    [7]: "crewmate_white:761211569950162985",
-    [8]: "crewmate_purple:761211569282744332",
-    [9]: "crewmate_brown:761211569467818015",
-    [10]: "crewmate_cyan:761211569744510976",
-    [11]: "crewmate_lime:761211569555636226",
+    [0]: "crewmate_red:770647336795373610",
+    [1]: "crewmate_blue:770647334550765588",
+    [2]: "crewmate_green:770647335751122994",
+    [3]: "crewmate_pink:770647336132673537",
+    [4]: "crewmate_orange:770647336434139146",
+    [5]: "crewmate_yellow:770647337675784272",
+    [6]: "crewmate_black:770647333167693845",
+    [7]: "crewmate_white:770647338041344020",
+    [8]: "crewmate_purple:770647336233861131",
+    [9]: "crewmate_brown:770647335088291851",
+    [10]: "crewmate_cyan:770647335276773417",
+    [11]: "crewmate_lime:770647335838810123",
 };
 
 export const DEAD_COLOR_EMOTES: { [key: number]: string } = {
-    [0]: "crewmate_red_dead:761987905370980372",
-    [1]: "crewmate_blue_dead:761987905375174676",
-    [2]: "crewmate_green_dead:761987905358397470",
-    [3]: "crewmate_pink_dead:761987905363116052",
-    [4]: "crewmate_orange_dead:761987905392345098",
-    [5]: "crewmate_yellow_dead:761987905391951923",
-    [6]: "crewmate_black_dead:761987905362984970",
-    [7]: "crewmate_white_dead:761987905082097705",
-    [8]: "crewmate_purple_dead:761987905244889119",
-    [9]: "crewmate_brown_dead:761987905500610628",
-    [10]: "crewmate_cyan_dead:761987905459322901",
-    [11]: "crewmate_lime_dead:761987905064402985",
+    [0]: "crewmate_red_dead:770647337450209311",
+    [1]: "crewmate_blue_dead:770647334434504725",
+    [2]: "crewmate_green_dead:770647336186544178",
+    [3]: "crewmate_pink_dead:770647336778727454",
+    [4]: "crewmate_orange_dead:770647336497446912",
+    [5]: "crewmate_yellow_dead:770647338007658497",
+    [6]: "crewmate_black_dead:770647334215745577",
+    [7]: "crewmate_white_dead:770647337948545055",
+    [8]: "crewmate_purple_dead:770647336342388767",
+    [9]: "crewmate_brown_dead:770647335532625970",
+    [10]: "crewmate_cyan_dead:770647335579418634",
+    [11]: "crewmate_lime_dead:770647336187592745",
 };
 
-export const BOT_INVITE_LINK =
-    "https://discord.com/api/oauth2/authorize?client_id=755520374510321745&permissions=21261521&scope=bot";
-
+export const BOT_INVITE_LINK = process.env.BOT_INVITE_LINK;
 export const COLOR_EMOTE_IDS = Object.values(COLOR_EMOTES).map(x => x.split(":")[1]);
-
 export const EMOTE_IDS_TO_COLOR: { [key: string]: number } = {};
 Object.entries(COLOR_EMOTES).forEach(x => (EMOTE_IDS_TO_COLOR[x[1].split(":")[1]] = +x[0]));
-
-export const GROUPING_DISABLED_EMOJI = "<:impostor_grouping_disabled:761985590123954176>";
-export const GROUPING_ENABLED_EMOJI = "<:impostor_grouping_enabled:761985589784215565>";
-export const GROUPING_TOGGLE_EMOJI = "toggle_impostor_grouping:761987527493943326";
-export const LEAVE_EMOJI = "leave_lobby:762751494495666207";
+export const GROUPING_DISABLED_EMOJI = "<:impostor_grouping_disabled:770647337117810709>";
+export const GROUPING_ENABLED_EMOJI = "<:impostor_grouping_enabled:770647337549955072>";
+export const GROUPING_TOGGLE_EMOJI = "toggle_impostor_grouping:770647338523557939";
+export const LEAVE_EMOJI = "leave_lobby:770665534793842708";
