@@ -8,6 +8,9 @@ read -p "Do you have Node.JS and NPM installed? [y/n] " nodenpm
 read -p "Do you have dotNET Core installed? [y/n] " dotnet
 read -p "Do you have PostgreSQL installed? [y/n] " postgresql
 read -p "Do you have pm2 installed? [y/n] " pm2
+read -p "Enter your Discord token: " token
+read -p "What is your bot's ID? Example: 764660478441160704: " id
+read -p "Enter your PostgreSQL password (leave blank if you do not have one or just installed PostgreSQL: " password
 case $nodenpm in
     [Nn]* ) sudo apt update; sudo apt -y install nodejs; sudo apt -y install npm;;
     [Yy]* ) echo "Proceeding with install.";;
@@ -30,15 +33,12 @@ case $pm2 in
 esac
 git clone --recursive https://github.com/molenzwiebel/Impostor
 cd Impostor/bot
-read -p "Enter your Discord token: " token
-read -p "Enter your PostgreSQL password (leave blank if you do not have one or just installed PostgreSQL: " password
 if [ -z "$password" ]
 then
     password=""
 else
     password=":${password}"
 fi
-read -p "What is your bot's ID? Example: 764660478441160704: " id
 sudo touch .env
 echo "DISCORD_TOKEN=${token}" >> .env
 echo "AU_CLIENT_DIR=../client/bin/Debug/netcoreapp3.1" >> .env
