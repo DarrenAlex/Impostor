@@ -7,29 +7,29 @@ fi
 
 read -p "Do you have Node.JS and NPM installed? [y/n] " nodenpm
 case $nodenpm in
-    [Yy]* ) sudo apt update; sudo apt -y install nodejs; sudo apt -y install npm;;
-    [Nn]* ) echo "Proceeding with install.";;
+    [Nn]* ) sudo apt update; sudo apt -y install nodejs; sudo apt -y install npm;;
+    [Yy]* ) echo "Proceeding with install.";;
     * ) echo "Please answer yes or no.";;
 esac
 
 read -p "Do you have dotNET Core installed? [y/n] " dotnet
 case $dotnet in
-    [Yy]* ) sudo wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; sudo dpkg -i packages-microsoft-prod.deb; sudo apt-get update; sudo apt-get install -y apt-transport-https; sudo apt-get install -y dotnet-sdk-5.0; sudo apt-get install -y aspnetcore-runtime-5.0; sudo apt-get install -y dotnet-runtime-5.0;;
-    [Nn]* ) echo "Proceeding with install.";;
+    [Nn]* ) sudo wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; sudo dpkg -i packages-microsoft-prod.deb; sudo apt-get update; sudo apt-get install -y apt-transport-https; sudo apt-get install -y dotnet-sdk-5.0; sudo apt-get install -y aspnetcore-runtime-5.0; sudo apt-get install -y dotnet-runtime-5.0;;
+    [Yy]* ) echo "Proceeding with install.";;
     * ) echo "Please answer yes or no.";;
 esac
 
 read -p "Do you have Node.JS and NPM installed? [y/n] " postgresql
 case $postgresql in
-    [Yy]* ) sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'; sudo wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -; sudo apt-get update; sudo apt-get -y install postgresql;;
-    [Nn]* ) echo "Proceeding with install.";;
+    [Nn]* ) sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'; sudo wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -; sudo apt-get update; sudo apt-get -y install postgresql;;
+    [Yy]* ) echo "Proceeding with install.";;
     * ) echo "Please answer yes or no.";;
 esac
 
 read -p "Do you have pm2 installed? [y/n] " pm2
 case $pm2 in
-    [Yy]* ) sudo npm install pm2@latest -g;;
-    [Nn]* ) echo "Proceeding with install.";;
+    [Nn]* ) sudo npm install pm2@latest -g;;
+    [Yy]* ) echo "Proceeding with install.";;
     * ) echo "Please answer yes or no.";;
 esac
 
