@@ -1,5 +1,6 @@
 #!/bin/bash
-sudo rm -rf Impostor
+sudo rm -rf Impostor 2>/dev/null
+rm restart.sh 2>/dev/null
 if [ "$EUID" -ne 0 ]
   then echo "This script requires root privileges. Please run with sudo ./install.sh."
   exit
@@ -10,7 +11,8 @@ read -p "Do you have PostgreSQL installed? [y/n] " postgresql
 read -p "Do you have pm2 installed? [y/n] " pm2
 read -p "Enter your Discord token: " token
 read -p "What is your bot's ID? Example: 764660478441160704: " id
-read -p "Enter your PostgreSQL password (leave blank if you do not have one or just installed PostgreSQL): " password
+echo "NOTE: If you don't have PostgreSQL installed, leave the field below blank."
+read -p "If you already have PostgreSQL installed, enter your password: " password
 case $nodenpm in
     [Nn]* ) sudo apt update; sudo apt -y install nodejs; sudo apt -y install npm;;
     [Yy]* ) echo "Node.JS and NPM is installed. Proceeding with install.";;
@@ -31,8 +33,11 @@ case $pm2 in
     [Yy]* ) echo "PM2 is installed. Proceeding with install.";;
     * ) echo "Please answer yes or no.";;
 esac
-pm2 kill
-git clone --recursive https://github.com/molenzwiebel/Impostor
+sudo -u postgres /etc/init.d/postgresql restart
+sudo apt update 0>/dev/null
+rm packages-microsoft-prod.deb 2>/dev/null
+pm2 kill 0>/dev/null
+git clone --recursive https://github.com/DarrenAlex/Impostor 0>/dev/null
 cd Impostor/bot
 if [ -z "$password" ]
 then
@@ -44,25 +49,32 @@ sudo touch .env
 echo "DISCORD_TOKEN=${token}" >> .env
 echo "AU_CLIENT_DIR=../client/bin/Debug/netcoreapp3.1" >> .env
 echo "DATABASE_URL=postgresql://postgres${password}@localhost:5432/postgres" >> .env
-echo "BOT_INVITE_LINK=https://discord.com/api/oauth2/authorize?client_id=${id}&permissions=8&scope=bot" >> .env
-npm install
+echo "BOT_INVITE_LINK=https://discord.com/api/oauth2/authorize?client_id=${id}&permissions=0&scope=bot" >> .env
+npm install 2>/dev/null
 echo "Waiting for the TypeScript compiler to finish... (This might take a while)"
 ./node_modules/.bin/tsc
 echo "TypeScript compiler finished."
-pm2 start node dist/index.js
+pm2 start node dist/index.js 0>/dev/null
 cd ../client
-dotnet build
-rm ../install.sh
-touch ../restart.sh
-chmod a+x ../restart.sh
-echo "#!/bin/bash" >> ../restart.sh
-echo "pm2 kill" >> ../restart.sh
-echo "cd bot" >> ../restart.sh
-echo "pm2 start node dist/index.js" >> ../restart.sh
-echo "cd ../client" >> ../restart.sh
-echo "dotnet build" >> ../restart.sh
-echo "exit 0;" >> ../restart.sh
-cp ../restart.sh ../../restart.sh
+dotnet build 2>/dev/null
+cd ../
+touch restart.sh
+chmod a+x restart.sh
+echo "#!/bin/bash" >> restart.sh
+echo "if [ \"$EUID\" -ne 0 ]" >> restart.sh
+echo "  then echo \"This script requires root privileges. Please run with sudo ./install.sh.\"" >> restart.sh
+echo "  exit 1;" >> restart.sh
+echo "fi" >> restart.sh
+echo "pm2 kill" >> restart.sh
+echo "sudo -u postgres /etc/init.d/postgresql restart" >> restart.sh
+echo "cd bot" >> restart.sh
+echo "pm2 start node dist/index.js" >> restart.sh
+echo "cd ../client" >> restart.sh
+echo "dotnet build" >> restart.sh
+echo "exit 0;" >> restart.sh
+sudo ./restart.sh
+rm install.sh
+cp restart.sh ../restart.sh
 echo "=========================================================================================================="
 echo "=========================================================================================================="
 echo "Installation complete. Run restart.sh to restart the bot if needed. You may remove the install script now."
